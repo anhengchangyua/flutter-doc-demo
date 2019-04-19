@@ -1,20 +1,70 @@
 import 'package:flutter/material.dart';
 // import 'package:english_words/english_words.dart';
 
-// void main() => runApp(MyApp());
+void main() => runApp(MyApp());
 
-// class MyApp extends StatelessWidget {
-//   @override
-//   Widget build(BuildContext context) {
-//     return new MaterialApp(
-//       title: 'Startup Name Generator',
-//        theme: new ThemeData(
-//         primaryColor: Colors.white,
-//       ),
-//       home: new RandomWords(),
-//     );
-//   }
-// }
+class MyApp extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return new MaterialApp(
+      title: 'Components',
+      theme: new ThemeData(
+        primaryColor: Colors.blue,
+      ),
+      home: new ComponentsList(),
+    );
+  }
+}
+
+void onItemClick(int i, String articleTitle) {
+  print(articleTitle);
+  Navigator.push(context, MaterialPageRoute<void>(
+  builder: (BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(title: Text('My Page')),
+      body: Center(
+        child: FlatButton(
+          child: Text('POP'),
+          onPressed: () {
+            Navigator.pop(context);
+          },
+        ),
+      ),
+    );
+  },
+));
+}
+
+class ComponentsList extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return new Scaffold(
+      appBar: new AppBar(
+        title: new Text('组件列表'),
+      ),
+      body: new GestureDetector(
+          child: new ListView(
+            children: <Widget>[
+              new ListTile(
+                leading: new Icon(Icons.map),
+                title: new Text('布局方式'),
+              ),
+              new ListTile(
+                leading: new Icon(Icons.photo),
+                title: new Text('Album'),
+              ),
+              new ListTile(
+                leading: new Icon(Icons.phone),
+                title: new Text('Phone'),
+              ),
+            ],
+          ),
+          onTap: () {
+            onItemClick(1, '123123');
+          }),
+    );
+  }
+}
 
 // class RandomWords extends StatefulWidget {
 //   @override
@@ -114,7 +164,6 @@ import 'package:flutter/material.dart';
 /**
  * 基础 widget
  */
-// import 'package:flutter/material.dart';
 
 // class MyAppBar extends StatelessWidget {
 //   MyAppBar({this.title});
@@ -315,105 +364,104 @@ import 'package:flutter/material.dart';
 //   }
 // }
 
-
 /**
  *  整合购物车
  */
-class Product {
-  const Product({this.name});
-  final String name;
-}
+// class Product {
+//   const Product({this.name});
+//   final String name;
+// }
 
-typedef void CartChangedCallback(Product product, bool inCart);
+// typedef void CartChangedCallback(Product product, bool inCart);
 
-class ShoppingListItem extends StatelessWidget {
-  ShoppingListItem({Product product, this.inCart, this.onCartChanged})
-      : product = product,
-        super(key: new ObjectKey(product));
+// class ShoppingListItem extends StatelessWidget {
+//   ShoppingListItem({Product product, this.inCart, this.onCartChanged})
+//       : product = product,
+//         super(key: new ObjectKey(product));
 
-  final Product product;
-  final bool inCart;
-  final CartChangedCallback onCartChanged;
+//   final Product product;
+//   final bool inCart;
+//   final CartChangedCallback onCartChanged;
 
-  Color _getColor(BuildContext context) {
-    return inCart ? Colors.black54 : Theme.of(context).primaryColor;
-  }
+//   Color _getColor(BuildContext context) {
+//     return inCart ? Colors.black54 : Theme.of(context).primaryColor;
+//   }
 
-  TextStyle _getTextStyle(BuildContext context) {
-    if (!inCart) return null;
+//   TextStyle _getTextStyle(BuildContext context) {
+//     if (!inCart) return null;
 
-    return new TextStyle(
-      color: Colors.black54,
-      decoration: TextDecoration.lineThrough,
-    );
-  }
+//     return new TextStyle(
+//       color: Colors.black54,
+//       decoration: TextDecoration.lineThrough,
+//     );
+//   }
 
-  @override
-  Widget build(BuildContext context) {
-    return new ListTile(
-      onTap: () {
-        onCartChanged(product, !inCart);
-      },
-      leading: new CircleAvatar(
-        backgroundColor: _getColor(context),
-        child: new Text(product.name[0]),
-      ),
-      title: new Text(product.name, style: _getTextStyle(context)),
-    );
-  }
-}
+//   @override
+//   Widget build(BuildContext context) {
+//     return new ListTile(
+//       onTap: () {
+//         onCartChanged(product, !inCart);
+//       },
+//       leading: new CircleAvatar(
+//         backgroundColor: _getColor(context),
+//         child: new Text(product.name[0]),
+//       ),
+//       title: new Text(product.name, style: _getTextStyle(context)),
+//     );
+//   }
+// }
 
-class ShoppingList extends StatefulWidget {
-  ShoppingList({Key key, this.products}) : super(key: key);
+// class ShoppingList extends StatefulWidget {
+//   ShoppingList({Key key, this.products}) : super(key: key);
 
-  final List<Product> products;
+//   final List<Product> products;
 
-  @override
-  _ShoppingListState createState() => new _ShoppingListState();
-}
+//   @override
+//   _ShoppingListState createState() => new _ShoppingListState();
+// }
 
-class _ShoppingListState extends State<ShoppingList> {
-  Set<Product> _shoppingCart = new Set<Product>();
+// class _ShoppingListState extends State<ShoppingList> {
+//   Set<Product> _shoppingCart = new Set<Product>();
 
-  void _handleCartChanged(Product product, bool inCart) {
-    setState(() {
- 
-      if (inCart)
-        _shoppingCart.add(product);
-      else
-        _shoppingCart.remove(product);
-    });
-  }
+//   void _handleCartChanged(Product product, bool inCart) {
+//     setState(() {
 
-  @override
-  Widget build(BuildContext context) {
-    return new Scaffold(
-      appBar: new AppBar(
-        title: new Text('Shopping List'),
-      ),
-      body: new ListView(
-        padding: new EdgeInsets.symmetric(vertical: 8.0),
-        children: widget.products.map((Product product) {
-          return new ShoppingListItem(
-            product: product,
-            inCart: _shoppingCart.contains(product),
-            onCartChanged: _handleCartChanged,
-          );
-        }).toList(),
-      ),
-    );
-  }
-}
+//       if (inCart)
+//         _shoppingCart.add(product);
+//       else
+//         _shoppingCart.remove(product);
+//     });
+//   }
 
-void main() {
-  runApp(new MaterialApp(
-    title: 'Shopping App',
-    home: new ShoppingList(
-      products: <Product>[
-        new Product(name: 'Eggs'),
-        new Product(name: 'Flour'),
-        new Product(name: 'Chocolate chips'),
-      ],
-    ),
-  ));
-}
+//   @override
+//   Widget build(BuildContext context) {
+//     return new Scaffold(
+//       appBar: new AppBar(
+//         title: new Text('Shopping List'),
+//       ),
+//       body: new ListView(
+//         padding: new EdgeInsets.symmetric(vertical: 8.0),
+//         children: widget.products.map((Product product) {
+//           return new ShoppingListItem(
+//             product: product,
+//             inCart: _shoppingCart.contains(product),
+//             onCartChanged: _handleCartChanged,
+//           );
+//         }).toList(),
+//       ),
+//     );
+//   }
+// }
+
+// void main() {
+//   runApp(new MaterialApp(
+//     title: 'Shopping App',
+//     home: new ShoppingList(
+//       products: <Product>[
+//         new Product(name: 'Eggs'),
+//         new Product(name: 'Flour'),
+//         new Product(name: 'Chocolate chips'),
+//       ],
+//     ),
+//   ));
+// }
