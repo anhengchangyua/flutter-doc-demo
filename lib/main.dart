@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import './Layout_demo.dart';
 // import 'package:english_words/english_words.dart';
 
 void main() => runApp(MyApp());
@@ -20,17 +21,7 @@ void onItemClick(int i, String articleTitle, context) {
   print(articleTitle);
   Navigator.push(context, MaterialPageRoute<void>(
     builder: (BuildContext context) {
-      return Scaffold(
-        appBar: AppBar(title: Text('My Page')),
-        body: Center(
-          child: FlatButton(
-            child: Text('POP'),
-            onPressed: () {
-              Navigator.pop(context);
-            },
-          ),
-        ),
-      );
+      return LayoutCom();
     },
   ));
 }
