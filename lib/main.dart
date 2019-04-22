@@ -16,23 +16,23 @@ class MyApp extends StatelessWidget {
   }
 }
 
-void onItemClick(int i, String articleTitle) {
+void onItemClick(int i, String articleTitle, context) {
   print(articleTitle);
   Navigator.push(context, MaterialPageRoute<void>(
-  builder: (BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(title: Text('My Page')),
-      body: Center(
-        child: FlatButton(
-          child: Text('POP'),
-          onPressed: () {
-            Navigator.pop(context);
-          },
+    builder: (BuildContext context) {
+      return Scaffold(
+        appBar: AppBar(title: Text('My Page')),
+        body: Center(
+          child: FlatButton(
+            child: Text('POP'),
+            onPressed: () {
+              Navigator.pop(context);
+            },
+          ),
         ),
-      ),
-    );
-  },
-));
+      );
+    },
+  ));
 }
 
 class ComponentsList extends StatelessWidget {
@@ -60,7 +60,7 @@ class ComponentsList extends StatelessWidget {
             ],
           ),
           onTap: () {
-            onItemClick(1, '123123');
+            onItemClick(1, '123123', context);
           }),
     );
   }
