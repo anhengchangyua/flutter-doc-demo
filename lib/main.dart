@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:hello_world/stateful_widget_styleA.dart';
+import 'package:hello_world/stateful_widget_styleC.dart';
 import './Layout_demo.dart';
+import './stateful_widget_demo.dart';
 // import 'package:english_words/english_words.dart';
 
 void main() => runApp(MyApp());
@@ -12,7 +15,7 @@ class MyApp extends StatelessWidget {
       theme: new ThemeData(
         primaryColor: Colors.blue,
       ),
-      home: new ComponentsList(),
+     home: new ComponentsList(),
     );
   }
 }
@@ -21,7 +24,8 @@ void onItemClick(int i, String articleTitle, context) {
   print(articleTitle);
   Navigator.push(context, MaterialPageRoute<void>(
     builder: (BuildContext context) {
-      return LayoutCom();
+      //return LayoutCom();
+        return ParentWidget();
     },
   ));
 }

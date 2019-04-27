@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:hello_world/stateful_widget_demo.dart';
 
 class LayoutCom extends StatelessWidget {
   @override
@@ -73,11 +74,7 @@ Lake Oeschinen lies at the foot of the Blüemlisalp in the Bernese Alps. Situate
               ],
             ),
           ),
-          new Icon(
-            Icons.star,
-            color: Colors.red[500],
-          ),
-          new Text('41'),
+        new FavoriteWidget()
         ],
       ),
     );
