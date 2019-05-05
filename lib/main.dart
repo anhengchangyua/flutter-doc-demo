@@ -7,7 +7,7 @@ import './stateful_widget_demo.dart';
 // import 'package:english_words/english_words.dart';
 
 void main() {
-  debugPaintSizeEnabled = true;
+  debugPaintSizeEnabled = false;
   runApp(MyApp());
 }
 
