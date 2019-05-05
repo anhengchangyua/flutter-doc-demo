@@ -28,7 +28,7 @@ class LayoutCom extends StatelessWidget {
 
     Widget buttonSection = new Container(
       child: new Row(
-        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: [
           buildButtonColumn(Icons.call, 'CALL'),
           buildButtonColumn(Icons.near_me, 'ROUTE'),
