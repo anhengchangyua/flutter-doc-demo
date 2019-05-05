@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:hello_world/stateful_widget_styleA.dart';
+import 'package:hello_world/stateful_widget_styleC.dart';
 import './Layout_demo.dart';
 import 'package:flutter/rendering.dart';
+import './stateful_widget_demo.dart';
 // import 'package:english_words/english_words.dart';
 
 void main() {
@@ -25,7 +28,8 @@ void onItemClick(int i, String articleTitle, context) {
   print(articleTitle);
   Navigator.push(context, MaterialPageRoute<void>(
     builder: (BuildContext context) {
-      return LayoutCom();
+      //return LayoutCom();
+      return ParentWidget();
     },
   ));
 }
